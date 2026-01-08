@@ -1,0 +1,9 @@
+
+{
+  "name": "TO_LET - Smart Rental Property Platform",
+  "description": "A modern, AI-powered dual-sided marketplace connecting property owners with tenants for room, hostel, and apartment rentals.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
