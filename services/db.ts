@@ -78,3 +78,24 @@ export const uploadPropertyImage = async (file: File): Promise<string> => {
     throw error;
   }
 };
+
+// Seeding Function
+import { MOCK_PROPERTIES } from "./mockData";
+
+export const seedMockProperties = async (ownerId: string) => {
+  if (!db) return;
+  try {
+    const promises = MOCK_PROPERTIES.map(prop =>
+      addDoc(collection(db, "properties"), {
+        ...prop,
+        ownerId,
+        createdAt: new Date().toISOString()
+      })
+    );
+    await Promise.all(promises);
+    console.log("Mock data seeded successfully");
+  } catch (error) {
+    console.error("Error seeding mock data:", error);
+    throw error;
+  }
+};
