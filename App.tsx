@@ -34,9 +34,7 @@ const Navigation = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-white/20 dark:border-slate-800/50 shadow-sm">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-indigo-700 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg shadow-indigo-200 dark:shadow-none group-hover:rotate-6 transition-transform duration-300">
-              T
-            </div>
+            <img src="/logo.png" alt="TO_LET Logo" className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md" />
             <span className="text-xl font-bold text-slate-800 dark:text-slate-100 tracking-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">TO_LET</span>
           </Link>
 
@@ -52,9 +50,9 @@ const Navigation = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-             {/* Theme Toggle */}
-             <button 
-              onClick={toggleTheme} 
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
               className="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -63,7 +61,7 @@ const Navigation = () => {
             {loading ? (
               <Loader2 className="animate-spin text-slate-400" size={20} />
             ) : !user ? (
-              <button 
+              <button
                 onClick={() => navigate('/auth')}
                 className="bg-slate-900 dark:bg-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-slate-200 dark:shadow-indigo-900/30 hover:bg-slate-800 dark:hover:bg-indigo-700 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
               >
@@ -76,9 +74,9 @@ const Navigation = () => {
                   <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">{role}</p>
                 </div>
                 <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-100 to-white dark:from-indigo-900 dark:to-slate-800 p-0.5 shadow-sm border border-indigo-50 dark:border-slate-700">
-                   <div className="w-full h-full rounded-full bg-indigo-50 dark:bg-slate-900 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold">
-                      {user.email?.[0].toUpperCase()}
-                   </div>
+                  <div className="w-full h-full rounded-full bg-indigo-50 dark:bg-slate-900 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold">
+                    {user.email?.[0].toUpperCase()}
+                  </div>
                 </div>
                 <button onClick={handleLogout} className="text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-colors p-2 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full">
                   <LogOut size={18} />
@@ -89,13 +87,13 @@ const Navigation = () => {
 
           {/* Mobile Menu Toggle */}
           <div className="md:hidden flex items-center gap-2">
-            <button 
-                onClick={toggleTheme} 
-                className="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-              >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <button 
+            <button
               className="text-slate-600 dark:text-slate-300 p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -162,39 +160,39 @@ const App: React.FC = () => {
     <Router>
       <div className="pb-20 md:pb-0 pt-16 min-h-screen bg-slate-50/50 dark:bg-slate-950 transition-colors duration-300">
         <Navigation />
-        
+
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/browse" element={<Browse />} />
           <Route path="/chat" element={<AIChat />} />
           <Route path="/signup" element={<Auth />} />
-          
+
           <Route path="/role-selection" element={
             <ProtectedRoute>
               <RoleSelection />
             </ProtectedRoute>
           } />
-          
+
           <Route path="/owner/dashboard" element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
           } />
-          
+
           <Route path="/owner/add-property" element={
             <ProtectedRoute>
-               <AddProperty />
+              <AddProperty />
             </ProtectedRoute>
           } />
 
           <Route path="/property/:id" element={
-             <PropertyDetail />
+            <PropertyDetail />
           } />
         </Routes>
 
         {/* Floating AI FAB */}
-        <Link 
+        <Link
           to="/chat"
           className="fixed bottom-24 right-6 md:bottom-8 md:right-8 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all z-40 group border-4 border-white/20 backdrop-blur-sm"
         >
