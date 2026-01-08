@@ -64,6 +64,16 @@ For production deployment, make sure to set the following environment variables:
 - `VITE_FIREBASE_MESSAGING_SENDER_ID`
 - `VITE_FIREBASE_APP_ID`
 
+## Google Gemini AI Setup
+
+This project uses Google Gemini AI for intelligent property search and description generation.
+
+1. Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Add it to your `.env.local` file:
+   ```
+   VITE_GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+
 ## Build
 
 To create a production build:

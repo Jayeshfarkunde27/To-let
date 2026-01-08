@@ -1,8 +1,7 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { Property } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 export async function searchPropertiesAI(userPrompt: string, availableProperties: Property[]): Promise<{
   text: string;
@@ -10,13 +9,13 @@ export async function searchPropertiesAI(userPrompt: string, availableProperties
 }> {
   try {
     // Simplify context to critical fields
-    const propertiesContext = availableProperties.map(p => ({ 
-      id: p.id, 
-      title: p.title, 
-      type: p.type, 
+    const propertiesContext = availableProperties.map(p => ({
+      id: p.id,
+      title: p.title,
+      type: p.type,
       bhk: p.bhk,
       furnishing: p.furnishing,
-      price: p.price, 
+      price: p.price,
       location: p.location,
       amenities: p.amenities
     }));
@@ -39,8 +38,8 @@ export async function searchPropertiesAI(userPrompt: string, availableProperties
           type: Type.OBJECT,
           properties: {
             text: { type: Type.STRING },
-            propertyIds: { 
-              type: Type.ARRAY, 
+            propertyIds: {
+              type: Type.ARRAY,
               items: { type: Type.STRING }
             }
           }
